@@ -13,7 +13,7 @@ function Game() {
         this.pipes = [];
         this.score_count();
     }
-    this.reset = function(){
+    this.reset = function () {
         this.player = null
         this.pipes = []
         this.score = 0
@@ -90,14 +90,14 @@ function Game() {
 
 
         if (this.playing == false) { window.requestAnimationFrame(() => this.start_screen()); }
-        else{
+        else {
             this.run()
         }
 
 
-        
+
     }
-    this.dead_screen = function(){
+    this.dead_screen = function () {
         this.scroll_background()
         this.ctx.font = "30px Arial";
         var text1 = "You Died";
@@ -113,7 +113,7 @@ function Game() {
 
 
         if (this.playing == false) { window.requestAnimationFrame(() => this.dead_screen()); }
-        else{
+        else {
             this.new()
             this.run()
         }
