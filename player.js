@@ -8,30 +8,44 @@ function Player(game, x, y) {
     this.y = y;
     this.gravity = .5;
     this.velocity = 0;
+    this.bottom = this.y + this.image.height;
+    this.left = this.x;
+    this.right = this.x + this.image.width;
+    this.top = this.y;
+    
 
     this.update =function(){
         this.velocity -= this.gravity;
         this.y -= this.velocity;
+        this.bottom = this.y + this.image.height;
+        this.left = this.x;
+        this.right = this.x + this.image.width;
+        this.top = this.y;
         this.collision();
     }
 
     this.collision = function(){
-        if (this.y >= 800 - this.game.base.height - this.image.height + 20){
-            this.y = 800 - this.game.base.height - this.image.height + 20;
+        if (this.y >= 800 - this.game.base.height - this.image.height + 10){
+            this.y = 800 - this.game.base.height - this.image.height + 10;
             this.velocity = 0;
+            console.log('dead');
             //DIE_SOUND.play()
-            this.game.playing = False;
-            //self.game.dead_screen()
+            this.game.playing = false;
+            this.game.dead_screen();
 
         }
 
         if (this.y < 0){
             this.y = 0;
             this.velocity = 0;
+            console.log('dead');
             //DIE_SOUND.play() 
-            this.game.playing = False;
-            //self.game.dead_screen()
+            this.game.playing = false;
+            this.game.dead_screen();
         }
+        
+        
+            
             
 
     }
